@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'hacker_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'student_DB',
+        'NAME': 'hackers',
         'USER': 'postgres', 
         'PASSWORD': 'Pass@123',
         'HOST': 'localhost',

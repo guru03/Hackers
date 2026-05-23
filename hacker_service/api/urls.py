@@ -3,7 +3,7 @@ from rest_framework import routers
 from .views import HackerViewSet
 
 router = routers.DefaultRouter()
-router.register(r'students', HackerViewSet)
+router.register(r'hackers', HackerViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
