@@ -1,7 +1,13 @@
 // New Styles for the application
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
 $fontColor: #002050;
-@use 'tailwindcss';
+// @use 'tailwindcss';
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

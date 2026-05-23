@@ -1,1 +1,76 @@
-<p>angular works!</p>
+<div class="container-fluid my-5">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h3 class="mb-4 text-xl">Categories</h3>
+            <div class="side-panel">
+                <ul class="list-group">
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'All'}"
+                        (click)="filterByCategory('All')">All</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'Angular'}"
+                        (click)="filterByCategory('Angular')">Angular</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'NgRx'}"
+                        (click)="filterByCategory('NgRx')">NgRx</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'Signals'}"
+                        (click)="filterByCategory('Signals')">Signals</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'JavaScript'}"
+                        (click)="filterByCategory('JavaScript')">JavaScript</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'HR'}"
+                        (click)="filterByCategory('HR')">HR</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'MCP'}"
+                        (click)="filterByCategory('MCP')">MCP</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3 class="mb-4 text-xl">NgRx Concepts</h3>
+            @for (item of questionList$ | async; track $index) {
+            @if (item.visible === true && (activeCategory() === 'All' || item.category === activeCategory())) {
+            <div class="question shadow-sm">
+                <div class="flex">
+                    <div class="number">
+                        <h3 class="me-2 text-xl"><span>{{ $index + 1 }}:</span></h3>
+                    </div>
+                    <div class="question-text">
+                        <h3 class="text-xl">
+                            <span>{{ item.question }}</span>
+                        </h3>
+                        <div class="text-lg" [innerHTML]="setHtml(item.answer)"></div>
+                        @if (item.answer2) {
+                        <div class="mt-3"><span class="text-lg font-medium">Additional Explanation:</span></div>
+                        <div class="text-lg" [innerHTML]="setHtml(item.answer2)"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+            }}
+        </div>
+        <div class="col-md-3">
+            <h3 class="mb-4 text-xl">Categories</h3>
+            <div class="side-panel">
+                <ul class="list-group">
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'All'}"
+                        (click)="filterByCategory('All')">All</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'Angular'}"
+                        (click)="filterByCategory('Angular')">Angular</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'NgRx'}"
+                        (click)="filterByCategory('NgRx')">NgRx</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'Signals'}"
+                        (click)="filterByCategory('Signals')">Signals</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'JavaScript'}"
+                        (click)="filterByCategory('JavaScript')">JavaScript</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'HR'}"
+                        (click)="filterByCategory('HR')">HR</li>
+                    <li class="list-group-item" [ngClass]="{'active': activeCategory() == 'MCP'}"
+                        (click)="filterByCategory('MCP')">MCP</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="scrollToTop">
+    <div class="cursor-pointer" (click)="scrollToTop()">
+        <img src="scrollTop.png" alt="Back to Top">
+    </div>
+</div>"
