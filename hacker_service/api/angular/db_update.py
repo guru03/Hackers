@@ -1,34 +1,25 @@
-# api/views.py
 import json, os
+# from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-
 from django.db import transaction
-from django.conf import settings
-from rest_framework import viewsets
 from .models import Angular
-from .serializers import AngularSerializer
-
-class AngularViewSet(viewsets.ModelViewSet):
-    queryset = Angular.objects.all()
-    serializer_class = AngularSerializer
 
 @csrf_exempt
 @require_POST
 def update_angular(request):
-    file_path = os.path.join(settings.BASE_DIR, "api", "data.json")  # adjust path
-    with open(file_path, encoding="utf-8") as f:
+    file_path = os.path.join(os.path.dirname(__file__), "data.json")
+    with open(file_path, encoding='utf-8') as f:
         records = json.load(f)
 
     try:
         with transaction.atomic():
             for rec in records:
-                # If id exists, update; else create new
+                # If serial_number exists, update; else create new
                 obj, created = Angular.objects.update_or_create(
-                    id=rec.get("id"),   # None means insert new
+                    serial_number=rec.get("serial_number", "01"),
                     defaults={
-                        "serial_number": rec.get("serial_number", "01"),
                         "category": rec.get("category", ""),
                         "topic": rec.get("topic", "general"),
                         "content_status": rec.get("content_status", "pending"),

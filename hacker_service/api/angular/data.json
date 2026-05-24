@@ -1,7 +1,7 @@
 [
     {
-        "id": 1,
-        "serial_number": "01",
+        "id": 3,
+        "serial_number": "03",
         "category": "NgRx",
         "topic": "State Management",
         "content_status": "updated",
