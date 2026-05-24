@@ -1,6 +1,7 @@
 # api/app.py
 from fastapi import FastAPI
 import psycopg2
+import os
 from psycopg2.extras import execute_batch
 import json
 
@@ -9,7 +10,8 @@ app = FastAPI()
 
 @app.post("/update-angular")
 def update_angular():
-    with open("data.json") as f:
+    file_path = os.path.join(os.path.dirname(__file__), "fixtures", "data.json")
+    with open(file_path) as f:
         records = json.load(f)
 
     # Prepare the data array for batch processing based on the Angular model

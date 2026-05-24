@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "serial_number": "01",
+        "category": "NgRx",
+        "topic": "State Management",
+        "content_status": "updated",
+        "visible": true,
+        "question": "What is NgRx and why do we use it in Angular applications?",
+        "answer": "test",
+        "answer2": null,
+        "image_url": null,
+        "image2_url": null,
+        "image3_url": null,
+        "angular_questions": null
+    },
+    {
+        "id": 4,
+        "serial_number": "04",
+        "category": "NgRx",
+        "topic": "State Management",
+        "content_status": "updated",
+        "visible": true,
+        "question": "What are the key concepts of ngrx and how do they work?",
+        "answer": "test",
+        "answer2": null,
+        "image_url": null,
+        "image2_url": null,
+        "image3_url": null,
+        "angular_questions": null
+    }
+]
