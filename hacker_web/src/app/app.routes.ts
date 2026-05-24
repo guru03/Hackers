@@ -49,4 +49,5 @@ export const routes: Routes = [
         path: 'contact',
         component: Contact,
     },
+    
 ];

@@ -1,11 +1,12 @@
-import { Component, signal, ViewEncapsulation } from '@angular/core';
+import { Component, signal, ViewEncapsulation, OnInit } from '@angular/core';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AppState } from '../store/app.state';
 import { selectQuestions, selectQuestionsByCategory } from './state/question.selector';
-import { QuestionStateInterface } from './state/questions.state';
+import { QuestionInterface } from './state/questions.state';
+import { loadQuestions } from './state/question.action';
 
 @Component({
   selector: 'hkr-angular',
@@ -14,17 +15,25 @@ import { QuestionStateInterface } from './state/questions.state';
   styleUrl: './angular.scss',
   encapsulation: ViewEncapsulation.None
 })
-export class Angular {
+export class Angular implements OnInit {
 
   activeCategory = signal('All');
   // activeCategory: string = 'All';
-  questionList$: Observable<QuestionStateInterface[]> | undefined;
+  questionList$: Observable<QuestionInterface[]> | undefined;
   scrollProgress = signal(0);
 
-  constructor(private store: Store<AppState>, private sanitizer: DomSanitizer) { }
+  constructor(private store: Store<AppState>, private sanitizer: DomSanitizer) {
+    
+  }
+
+  // constructor(private store: Store<{ questions: any }>) {
+  //   this.questionList$ = this.store.select(state => state.questions.questions);
+  //   this.store.dispatch(QuestionActions.loadQuestions());
+  // }
 
   ngOnInit(): void {
     this.questionList$ = this.store.select(selectQuestions);
+    this.store.dispatch(loadQuestions());
   }
 
   filterByCategory(category: string): void {
@@ -34,12 +43,12 @@ export class Angular {
 
   // Not using bellow method, just for testing purpose
   filterByCategoryTesting(category: string) {
-    this.activeCategory = signal(category);
+    this.activeCategory.set(category);
     if (category === 'All') {
       this.questionList$ = this.store.select(selectQuestions);
     } else {
       this.questionList$ = this.store.select(selectQuestions).pipe(
-        map(questions => questions.filter(q => q.category === category))
+        map(questions => questions.filter((q: QuestionInterface) => q.category === category))
       );
     }
   }

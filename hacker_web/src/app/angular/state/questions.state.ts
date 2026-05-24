@@ -1,29 +1,31 @@
-export interface QuestionStateInterface {
+export interface QuestionInterface {
     id: number;
+    serial_number?: string;
     category: string;
-    topic?: string;
-    visible?: boolean;
-    contentStatus?: string;
+    topic: string;
+    content_status?: string;
+    visible: boolean;
     question: string;
     answer: string;
     answer2?: string;
-    imageUrl?: string;
-    image2Url?: string;
-    image3Url?: string;
+    image_url?: string;
+    image2_url?: string;
+    image3_url?: string;
 }
 
-export interface QuestionsState {
-    questions: QuestionStateInterface[];
+export interface QuestionListInterface {
+    questions: QuestionInterface[];
 }
 
-export const initialState: QuestionsState = {
+export const initialState: QuestionListInterface = {
     questions:
         [
             {
                 id:             1,
+                serial_number: "01",
                 category:       "NgRx",
                 topic:          "State Management",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What is NgRx and why do we use it in Angular applications?",
                 answer:         `<p>NgRx is a state management library which is based on Redux principles. It helps us to manage complex application state in a predictable way using a single store, which is immutable, and unidirectional data flow.</p> 
@@ -31,9 +33,10 @@ export const initialState: QuestionsState = {
             },
             {
                 id:             2,
+                serial_number: "02",
                 category:       "NgRx",
                 topic:          "State Management",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What are the key concepts of ngrx and how do they work?",
                 answer:         `<span>There are four key concepts in ngrx:</span>
@@ -47,45 +50,50 @@ export const initialState: QuestionsState = {
             },
             {
                 id:             3,
+                serial_number: "03",
                 category:       "NgRx",
                 topic:          "Side Effects",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What are Effects in NgRx?",
                 answer:         "Effects are used to handle side effects in our application, such as fetching data from an API or performing other asynchronous operations. They listen for specific actions and can dispatch new actions based on the results of those operations."
             },
             {
                 id:             4,
+                serial_number: "04",
                 category:       "NgRx",
                 topic:          "Comparison",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What is the difference between NgRx and Redux?",
                 answer:         "NgRx is inspired by Redux but is specifically designed for Angular applications. It uses RxJS for handling asynchronous operations and provides additional features like Effects and Selectors that are not present in Redux."
             },
             {
                 id:             5,
+                serial_number: "05",
                 category:       "NgRx",
                 topic:          "Side Effects",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:         true,
                 question:        "How do you handle side effects in NgRx?",
                 answer:          "Side effects in NgRx are handled using Effects, which listen for specific actions and perform tasks such as making HTTP requests or interacting with external services, and then dispatch new actions based on the results."
             },
             {
                 id:             6,
+                serial_number: "06",
                 category:       "NgRx",
                 topic:          "Setup",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:         true,
                 question:        "How do you set up NgRx in an Angular application?",
                 answer:          "To set up NgRx in an Angular application, you need to install the @ngrx/store package, create a StoreModule in your AppModule, define your state, actions, reducers, and selectors, and then use the Store service to dispatch actions and select state in your components."
             },
             {
                 id:             7,
+                serial_number: "07",
                 category:       "NgRx",
                 topic:          "Router Integration",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What is ngrx router?",
                 answer:         "NgRx Router is a library that integrates the Angular Router with NgRx Store, allowing you to manage router state in your application using the same principles as your application state. It provides actions and selectors for working with the router state, making it easier to synchronize the router with your application's state management.",
@@ -93,63 +101,70 @@ export const initialState: QuestionsState = {
             },
             {
                 id:             8,
+                serial_number: "08",
                 category:       "Angular",
                 topic:          "Lazy Loading",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What is lazy loading in Angular and how does it improve application performance?",
                 answer:         "Lazy loading in Angular is a design pattern where feature modules are loaded only when their routes are accessed, instead of at application startup. This reduces the initial bundle size, improves performance, and makes large applications more scalable. For example, a dashboard or reports module can be lazy-loaded so users only download it when they navigate there, not at app launch."
             },
             {
                 id:             9,
+                serial_number: "09",
                 category:       "Angular",
                 topic:          "Pipes",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are pure Pipes in angular?",
                 answer:         "In Angular, pure pipes are the default type of pipes that only re-run when Angular detects a pure change—meaning a change in primitive values (string, number, boolean, symbol) or a change in object references (arrays, objects, dates). They do not re-execute for in-place mutations of objects or arrays, which makes them highly performant."
             },
             {
                 id:             10,
+                serial_number: "10",
                 category:       "Angular",
                 topic:          "HTTP Interceptors",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What are HTTP interceptors in Angular and how do they work?",
                 answer:         "HTTP interceptors in Angular are a powerful way to modify HTTP requests and responses globally. They work by implementing the HttpInterceptor interface, allowing you to intercept and manipulate HTTP requests before they are sent to the server and responses before they are processed by the application. Common use cases include adding authentication tokens, logging, error handling, and modifying headers."
             },
             {
                 id:             11,
+                serial_number: "11",
                 category:       "Angular",
                 topic:          "HTTP Interceptors",
-                contentStatus:  "updated",
+                content_status:  "updated",
                 visible:        true,
                 question:       "What is an HTTP Interceptor?",
                 answer:         "HTTP Interceptors are a middleware mechanism in Angular's HttpClient module that intercepts HTTP requests and responses. They allow us to intercept outgoing HTTP requests or incoming HTTP responses and perform operations such as modifying request headers, handling errors, adding authentication tokens, caching responses, and logging."
             },
             {
                 id:             12,
+                serial_number: "12",
                 category:       "Angular",
                 topic:          "Lifecycle Hooks",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are lifecycle hooks in Angular?",
                 answer:         "Lifecycle hooks in Angular are special methods that allow you to tap into key moments in a component's lifecycle, such as when it is created, updated, or destroyed. Some common lifecycle hooks include ngOnInit (called after the component is initialized), ngOnChanges (called when input properties change), ngOnDestroy (called just before the component is destroyed), and ngAfterViewInit (called after the component's view has been fully initialized). These hooks provide opportunities to perform initialization, cleanup, or respond to changes in the component's state."
             }, 
             {
                 id:             13,
+                serial_number: "13",
                 category:       "Angular",
                 topic:          "Standalone Components",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are standalone components in Angular?",
                 answer:         "Standalone components in Angular are a new feature that allows developers to create components without the need for an NgModule. This simplifies the component creation process and reduces boilerplate code, making it easier to build and maintain Angular applications. Standalone components can be used directly in templates without being declared in an NgModule, which promotes better modularity and reusability."
             },
             {
                 id:             14,
+                serial_number: "14",
                 category:       "Angular",
                 topic:          "Ivy",
-                contentStatus:  "pending",
+                content_status  :  "pending",
                 visible:        true,
                 question:       "What is Ivy in Angular?",
                 answer:         `Ivy is the next-generation compilation and rendering pipeline for Angular. It replaced the older "View Engine" and became the default for all new applications starting with Angular 9.
@@ -167,7 +182,7 @@ export const initialState: QuestionsState = {
                 id:             13,
                 category:       "Angular",
                 topic:          "Guards",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are Angular Guards?",
                 answer:         `Angular Guards are services that control access to routes in an Angular application. They are used to protect routes from unauthorized access or to prevent unwanted navigation.
@@ -182,7 +197,7 @@ export const initialState: QuestionsState = {
                 id:             14,
                 category:       "Signals",
                 topic:          "Signals",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are Signals in Angular?",
                 answer:         `Signals in Angular is essentially a wrapper around a value that notifies consumers (funtions, components, or services) whenever the value changes. This allow for a reactive data flow, where changes in the signal's value can trigger updateds elsewhere in the application.
@@ -203,7 +218,7 @@ export const initialState: QuestionsState = {
                 id:             15,
                 category:       "Signals",
                 topic:          "Signals vs Observables",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        false,
                 question:       "Types of Signals in Angular?",
                 answer:         `<div class="text-lg">There are two main types of signals:</div>
@@ -215,7 +230,7 @@ export const initialState: QuestionsState = {
                 id:             15,
                 category:       "Signals",
                 topic:          "Benefits",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are the benefits of using Signals in Angular?",
                 answer:         `<ul class="list-items">
@@ -229,7 +244,7 @@ export const initialState: QuestionsState = {
                 id:             16,
                 category:       "Angular",
                 topic:          "Lifecycle Hooks",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are lifecycle hooks in Angular?",
                 answer:         `Every component in Angular has a lifecycle, and different phases it goes through from the time of creation to the time it's destroyed. Angular provides hooks to tap into these phases and trigger changes at specific phases in a lifecycle.
@@ -248,7 +263,7 @@ export const initialState: QuestionsState = {
                 id:             17,
                 category:       "JavaScript",
                 topic:          "Closures",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are closures in JavaScript?",
                 answer:         "A closure in JavaScript is a function that has access to its own scope, the outer function's scope, and the global scope. It allows a function to access variables from an enclosing scope even after the outer function has finished executing. Closures are commonly used for data privacy and creating functions with persistent state."
@@ -257,7 +272,7 @@ export const initialState: QuestionsState = {
                 id:             18,
                 category:       "JavaScript",
                 topic:          "Array Methods",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What is the difference between slice() and splice() in JavaScript?",
                 answer:         `<ul class="list-items">
@@ -271,7 +286,7 @@ export const initialState: QuestionsState = {
                 id:             19,
                 category:       "JavaScript",
                 topic:          "Array Methods",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "Map and Set in JavaScript?",
                 answer:         `<ul class="list-items">
@@ -283,7 +298,7 @@ export const initialState: QuestionsState = {
                 id:             20,
                 category:       "JavaScript",
                 topic:          "Function Methods",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What is the difference between call(), apply(), and bind() in JavaScript?",
                 answer:         `<ul class="list-items">
@@ -296,7 +311,7 @@ export const initialState: QuestionsState = {
                 id:             21,
                 category:       "JavaScript",
                 topic:          "Web Storage",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What is Local Storage?",
                 answer:         `Local Storage is a web storage API that allows developers to store key-value pairs in a web browser with no expiration date. It provides a way to persist data on the client side, allowing it to be accessed across sessions and page reloads. 
@@ -307,7 +322,7 @@ export const initialState: QuestionsState = {
                 id:             22,
                 category:       "JavaScript",
                 topic:          "Web Storage",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What is Session Storage?",
                 answer:         `Session Storage is a web storage API that allows developers to store key-value pairs in a web browser with a session-based expiration. It provides a way to persist data on the client side, but the data is cleared when the browser tab or window is closed. 
@@ -318,7 +333,7 @@ export const initialState: QuestionsState = {
                 id:             24,
                 category:       "JavaScript",
                 topic:          "Comparison Operators",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "what is the difference between == and === in JavaScript?",
                 answer:         "In JavaScript, == is the equality operator that performs type coercion, meaning it converts the operands to the same type before making the comparison. For example, 5 == '5' would return true because the string '5' is coerced to the number 5. On the other hand, === is the strict equality operator that does not perform type coercion and requires both the value and type to be the same for it to return true. So, 5 === '5' would return false because they are of different types."
@@ -327,7 +342,7 @@ export const initialState: QuestionsState = {
                 id:             25,
                 category:       "HR",
                 topic:          "Self Introduction",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:         true,
                 question:       "Introduce yourself",
                 answer:         "I'm Guru, a frontend developer with strong expertise in Angular. Over the past few years, I've worked extensively with modern Angular features like signals, standalone components, and lazy loading. I also have solid experience integrating REST APIs with HttpClient and RxJS, and I’ve designed modular folder structures for authentication and asset management. Recently, I’ve been focusing on optimizing state handling with NgRx and exploring how Angular's new reactivity model improves performance. I'm excited about opportunities where I can apply these skills to build scalable, maintainable applications and contribute to a team that values clean architecture and innovation."
@@ -336,7 +351,7 @@ export const initialState: QuestionsState = {
                 id:             26,
                 category:       "HR",
                 topic:          "Current Role",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "Role and responsibilities in your current project?",
                 answer:         `As a frontend developer, my role is to design and implement user interfaces that are both visually appealing and highly functional. I am responsible for translating design mockups into responsive web applications using Angular, ensuring cross-browser compatibility, and optimizing performance. Additionally, I collaborate closely with backend developers to integrate APIs and manage state effectively, often using tools like NgRx. I also participate in code reviews, contribute to architectural decisions, and stay up-to-date with the latest frontend technologies to continuously improve our development processes.`
@@ -345,7 +360,7 @@ export const initialState: QuestionsState = {
                 id:             27,
                 category:       "HR",
                 topic:          "Strengths and Weaknesses",
-                contentStatus:  "pending",
+                content_status:  "pending",
                 visible:        true,
                 question:       "What are your strengths and weaknesses?",
                 answer:         `<div class="text-lg"><span class="font-medium">Strengths:</span></div>
@@ -364,7 +379,7 @@ export const initialState: QuestionsState = {
                 id:             28,
                 category:       "Artificial Intelligence",
                 topic:          "MCP",
-                contentStatus:  "Updated",
+                content_status:  "Updated",
                 visible:        true,
                 question:       "What is MCP in AI?",
                 answer:         "MCP, or Model Context Protocol, is an open standard that lets AI models securely connect to external systems like files, databases, and APIs. It's essentially the USB-C of AI — a universal interface that reduces integration complexity, improves security, and enables richer, enterprise-grade AI applications."
