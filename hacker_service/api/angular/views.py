@@ -17,18 +17,17 @@ class AngularViewSet(viewsets.ModelViewSet):
 @csrf_exempt
 @require_POST
 def update_angular(request):
-    file_path = os.path.join(settings.BASE_DIR, "api", "data.json")  # adjust path
+    file_path = os.path.join(os.path.dirname(__file__), "data.json")
     with open(file_path, encoding="utf-8") as f:
         records = json.load(f)
 
     try:
         with transaction.atomic():
             for rec in records:
-                # If id exists, update; else create new
+                # If serial_number exists, update; else create new
                 obj, created = Angular.objects.update_or_create(
-                    id=rec.get("id"),   # None means insert new
+                    serial_number=rec.get("serial_number", "01"),
                     defaults={
-                        "serial_number": rec.get("serial_number", "01"),
                         "category": rec.get("category", ""),
                         "topic": rec.get("topic", "general"),
                         "content_status": rec.get("content_status", "pending"),
